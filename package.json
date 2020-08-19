@@ -6,9 +6,13 @@
 	"engines": {
 		"vscode": "^1.48.0"
 	},
+	"license": "See license in LICENSE.",
 	"categories": [
 		"Other"
 	],
+	"keywords": ["nba", "live", "scores", "ticker"],
+	"preview": true,
+	"icon": "./images/icon.png",
 	"activationEvents": [
 		"onStartupFinished"
 	],
