@@ -6,7 +6,11 @@ Adds live(ish) NBA scores for today's games in your status bar. Built using the 
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- VSCode must have a working internet connection.
+
+## Installation
+
+Install via the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=omkarmoghe.nba-ticker).
 
 ## Extension Settings
 
