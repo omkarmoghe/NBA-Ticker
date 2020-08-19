@@ -1,10 +1,30 @@
-import { window } from "vscode";
+import { StatusBarItem } from "vscode";
+import { fetchGames, Game } from "./balldontlie-api";
 
-// Displays scores in a popup window with more info. Invoked via command or clicking on the ticker.
-export function showScores(): void {}
+export function update(ticker: StatusBarItem): void {
+  fetchScores()
+    .then((scores) => buildTickerString(scores))
+    .then((tickerString) => updateTicker(ticker, tickerString));
+}
 
 // Fetches the latest scores from the "balldontlie" API.
-export function fetchScores(): void {}
+function fetchScores(): Promise<string[]> {
+  return fetchGames().then((games) => buildScorelines(games));
+}
+
+function buildScorelines(games: Game[]): string[] {
+  return games.map(({ status, home_team, home_team_score, visitor_team, visitor_team_score }) => {
+    return `[${status}] ${visitor_team.abbreviation} ${visitor_team_score} @ ${home_team_score} ${home_team.abbreviation}`;
+  });
+}
+
+function buildTickerString(scorelines: string[]): string {
+  return scorelines.join(" | ");
+}
 
 // Updates the ticker in the Status Bar.
-export function updateTicker(): void {}
+function updateTicker(ticker: StatusBarItem, tickerString: string): void {
+  console.log(tickerString);
+  ticker.text = tickerString;
+  ticker.show();
+}

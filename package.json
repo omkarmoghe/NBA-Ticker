@@ -16,8 +16,9 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "nba-ticker.showScores",
-				"title": "NBA Ticker: Show scores"
+				"command": "nba-ticker.updateScores",
+				"title": "Update Scores",
+				"category": "NBA Ticker"
 			}
 		]
 	},
@@ -43,6 +44,7 @@
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {
-		"axios": "^0.19.2"
+		"axios": "^0.19.2",
+		"moment": "^2.27.0"
 	}
 }
