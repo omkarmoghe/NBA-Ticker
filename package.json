@@ -2,7 +2,7 @@
 	"name": "nba-ticker",
 	"displayName": "NBA Ticker",
 	"description": "Simple live(ish) NBA scores in your status bar.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -11,7 +11,12 @@
 	"categories": [
 		"Other"
 	],
-	"keywords": ["nba", "live", "scores", "ticker"],
+	"keywords": [
+		"nba",
+		"live",
+		"scores",
+		"ticker"
+	],
 	"icon": "images/icon.png",
 	"repository": {
 		"type": "git",
