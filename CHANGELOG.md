@@ -7,5 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Config option for teams
+- Config option for poll fequency
+
+## [0.0.2] - 2020-08-19
+### Changed
+- Fixed date to use current date
+
+## [0.0.1] - 2020-08-19
+### Added
 - Status bar item to display scores
 - Command to update scores (no UI)

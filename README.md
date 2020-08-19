@@ -20,4 +20,10 @@ This extension contributes the following settings:
 * `nba-ticker.includeTeams`: array of team abbreviations to include, e.g. `["GSW", "LAL"]`
 * `nba-ticker.excludeTeams`: array of team abbreviations to exclude, e.g. `["CLE", "BOS"]`
 
+## FAQ
+
+### What is "live(ish)"?
+The [balldontlie API](https://www.balldontlie.io/#considerations-3) updates games every ~10 minutes.
+> Games will be updated every ~10 minutes
+
 ## [Changelog](./CHANGELOG.md)

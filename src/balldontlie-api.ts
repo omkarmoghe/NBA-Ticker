@@ -29,7 +29,7 @@ export interface Game {
   visitor_team_score: number,
 }
 
-const today = () => moment().format("YYYY-MM-18");
+const today = () => moment().format("YYYY-MM-DD");
 
 export function fetchGames(dates: string[] = [today()], teams: number[] | null = null): Promise<Game[]> {
   const params = { dates, teams };
