@@ -17,7 +17,7 @@ interface Team {
 
 export interface Game {
   id: number,
-  perdiod: number,
+  period: number,
   date: string,
   season: number,
   postseason: boolean,
