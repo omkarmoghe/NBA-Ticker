@@ -6,13 +6,17 @@
 	"engines": {
 		"vscode": "^1.48.0"
 	},
+	"publisher": "omkarmoghe",
 	"license": "See license in LICENSE.",
 	"categories": [
 		"Other"
 	],
 	"keywords": ["nba", "live", "scores", "ticker"],
-	"preview": true,
-	"icon": "./images/icon.png",
+	"icon": "images/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/omkarmoghe/NBA-Ticker.git"
+	},
 	"activationEvents": [
 		"onStartupFinished"
 	],
