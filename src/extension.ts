@@ -3,7 +3,7 @@
 import { commands, ExtensionContext, window, StatusBarItem, StatusBarAlignment } from "vscode";
 import { update } from "./commands";
 
-const TIMEOUT = 5 * 60 * 1000 // every minute
+const TIMEOUT = 1 * 60 * 1000; // every minute
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
