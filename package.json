@@ -33,7 +33,36 @@
 				"title": "Update Scores",
 				"category": "NBA Ticker"
 			}
-		]
+		],
+		"configuration": {
+			"title": "NBA Ticker",
+			"properties": {
+				"nba-ticker.side": {
+					"description": "Specifies which side of the status bar to display the ticker.",
+					"type": "string",
+					"enum": ["left", "right"],
+					"default": "right"
+				},
+				"nba-ticker.priority": {
+					"markdownDescription": "Specifies the ticker's priority relative to other items in the status bar. **Higher values are shows more to the left.**",
+					"type": "number",
+					"default": 0,
+					"minimum": 0
+				},
+				"nba-ticker.teamFilter": {
+					"markdownDescription": "Specifies which teams games are shown for; other teams are ignored. All teams will be shown if the array is empty (`[]`). Use abbreviated team names (e.g. `\"GSW\"`, `\"LAL\"`).",
+					"type": "array",
+					"default": []
+				},
+				"nba-ticker.pollDelaySeconds": {
+					"markdownDescription": "Specifies how long to wait before fetching new game data from the API. The [balldontlie API](https://www.balldontlie.io/#considerations-3) updates games every ~10 minutes, so polling faster than that is pointless. Defaults to `60` seconds, i.e. every minute.",
+					"type": "number",
+					"default": 60,
+					"minimum": 5,
+					"maximum": 600
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
