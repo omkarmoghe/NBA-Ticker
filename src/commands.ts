@@ -1,30 +1,42 @@
-import { StatusBarItem } from "vscode";
-import { fetchGames, Game } from "./balldontlie-api";
+import { fetchGames, Game, Score } from "./balldontlie-api";
+import { ticker, config } from "./extension";
 
-export function update(ticker: StatusBarItem): void {
-  fetchScores()
-    .then((scores) => buildTickerString(scores))
-    .then((tickerString) => updateTicker(ticker, tickerString));
+// Global set of Scores
+let scores: Score[];
+let displayedScorePos: number;
+
+export function fetchScores(): Promise<Score[]> {
+  return fetchGames()
+    .then((games) => buildScores(games))
+    .then((newScores) => {
+      scores = newScores;
+      return newScores;
+    });
 }
 
-// Fetches the latest scores from the "balldontlie" API.
-function fetchScores(): Promise<string[]> {
-  return fetchGames().then((games) => buildScorelines(games));
-}
-
-function buildScorelines(games: Game[]): string[] {
-  return games.map(({ status, home_team, home_team_score, visitor_team, visitor_team_score }) => {
-    return `[${status}] ${visitor_team.abbreviation} ${visitor_team_score} @ ${home_team_score} ${home_team.abbreviation}`;
-  });
-}
-
-function buildTickerString(scorelines: string[]): string {
-  return scorelines.join(" | ");
+// Builds a list of `Scores` from a list of `Games`.
+function buildScores(games: Game[]): Score[] {
+  return games.map((game) => new Score(game));
 }
 
 // Updates the ticker in the Status Bar.
-function updateTicker(ticker: StatusBarItem, tickerString: string): void {
-  console.log(tickerString);
-  ticker.text = tickerString;
-  ticker.show();
+export function updateTicker(): void {
+  debugger;
+  if (ticker && scores) {
+    // Grab format and score to display.
+    const formatString = config("format");
+    displayedScorePos = displayedScorePos || 0;
+    const score = scores[displayedScorePos];
+
+    // Update text
+    ticker.text = score.format(formatString)
+
+    // Increment displayed score position.
+    displayedScorePos++;
+    if (displayedScorePos >= scores.length) {
+      displayedScorePos = 0;
+    }
+  } else if (ticker) {
+    ticker.text = "No games today."
+  }
 }
