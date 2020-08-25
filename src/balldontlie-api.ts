@@ -36,7 +36,7 @@ const TEAM_MAP = {
   "TOR": 28,
   "UTA": 29,
   "WAS": 30,
-}
+};
 
 interface Team {
   abbreviation: string,
