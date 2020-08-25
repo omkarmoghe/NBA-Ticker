@@ -35,7 +35,10 @@ function buildTicker(): StatusBarItem {
 }
 
 function tickerPoll(manager: Manager): void {
-  commands.executeCommand("nba-ticker.updateTicker", manager);
+  commands.executeCommand("nba-ticker.updateTicker", manager).then(
+    undefined,
+    (e) => console.error(e.message)
+  );
   setTimeout(
     () => tickerPoll(manager),
     config("tickerDelaySeconds") * 1000
@@ -43,7 +46,10 @@ function tickerPoll(manager: Manager): void {
 }
 
 function scorePoll(manager: Manager): void {
-  commands.executeCommand("nba-ticker.fetchScores", manager);
+  commands.executeCommand("nba-ticker.fetchScores", manager).then(
+    undefined,
+    (e) => console.error(e.message)
+  );
   setTimeout(
     () => scorePoll(manager),
     config("pollDelaySeconds") * 1000

@@ -17,15 +17,16 @@ Install via the [VSCode Marketplace](https://marketplace.visualstudio.com/items?
 All settings are prefixed by with `"nba-ticker."`, so `"side"` becomes `"nba-ticker.side"` when editing as JSON.
 
 ### `"format"`
-Specifies how the game info should be displayed. Defaults to `"${visitorTeam} ${visitorScore} @ ${homeScore} ${homeTeam} | ${status}"`, which looks like `GSW 42 @ LAL 24 [4:20 3rd]`. The available wildcards are:
+Specifies how the game info should be displayed. Defaults to `"${visitorTeam} ${visitorScore} @ ${homeScore} ${homeTeam} - ${status}"`, which looks like `GSW 42 @ LAL 24 - 4:20 1st`. The available wildcards are:
 - `${visitorTeam}`: The visiting team's abbreviated name, (e.g. `"GSW"`)
 - `${visitorScore}`: The visiting team's score
 - `${homeTeam}`: The home team's abbreviated name, (e.g. `"LAL"`)
 - `${homeScore}`: The home team's score
 - `${status}`: The status of the game
-  - If the game hasn't started yet, this will be the scheduled start time (e.g. `"6:30 PM ET"`)
-  - If the game is ongoing, this will be either `"<TIME LEFT IN PERIOD> <PERIOD>"` (e.g. `"4:20 3rd"`), or `"Halftime"`
-  - If the game is over, this will be `"FINAL"`
+  - If the game hasn't started yet, this will be the scheduled start time (e.g. `"9:30 PM ET"`)
+  - If the game is ongoing, this will be either `"<TIME LEFT IN PERIOD> <PERIOD>"` (e.g. `"4:20 1st"`), or `"Halftime"`
+  - If the game is over, this will be `"Final"`
+  - If the status is unknown, this will be `"TBD"`
 
 ### `"pollDelaySeconds"`
 Specifies how long to wait before fetching new game data from the API. The [balldontlie API](https://www.balldontlie.io/#considerations-3) updates games every ~10 minutes, so polling faster than that is pointless. Defaults to `60` seconds, i.e. every minute. Allowed values are [`10`, `600`].

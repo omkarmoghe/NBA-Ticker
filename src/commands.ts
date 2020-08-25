@@ -1,8 +1,10 @@
 import { fetchGames, Game, Score } from "./balldontlie-api";
 import Manager from "./manger";
+import { config } from "./extension";
 
 export function fetchScores(manager: Manager): Promise<Manager> {
-  return fetchGames()
+  const teamFilter = config("teamFilter") || [];
+  return fetchGames(teamFilter)
     .then((games) => buildScores(games))
     .then((newScores) => {
       manager.updateScores(newScores);
