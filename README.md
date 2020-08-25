@@ -2,7 +2,7 @@
 
 Adds live(ish) NBA scores for today's games in your status bar. Built using the amazing [balldontlie API](https://www.balldontlie.io/#introduction). If you like this extension, please consider [donating](https://www.patreon.com/balldontlie) to them.
 
-![Status bar ticker](./images/screenshot-1.png)
+![Status bar ticker](./images/demo-gif-1.gif)
 
 ## Requirements
 
@@ -17,7 +17,7 @@ Install via the [VSCode Marketplace](https://marketplace.visualstudio.com/items?
 All settings are prefixed by with `"nba-ticker."`, so `"side"` becomes `"nba-ticker.side"` when editing as JSON.
 
 ### `"format"`
-Specifies how the game info should be displayed. Defaults to `"${visitorTeam} ${visitorScore} @ ${homeScore} ${homeTeam} [${status}]"`, which looks like `GSW 42 @ LAL 24 [4:20 3rd]`. The available wildcards are:
+Specifies how the game info should be displayed. Defaults to `"${visitorTeam} ${visitorScore} @ ${homeScore} ${homeTeam} | ${status}"`, which looks like `GSW 42 @ LAL 24 [4:20 3rd]`. The available wildcards are:
 - `${visitorTeam}`: The visiting team's abbreviated name, (e.g. `"GSW"`)
 - `${visitorScore}`: The visiting team's score
 - `${homeTeam}`: The home team's abbreviated name, (e.g. `"LAL"`)

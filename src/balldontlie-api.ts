@@ -1,12 +1,42 @@
 import axios from "axios";
 import * as moment from "moment";
 
-// Global update timestamp.
-let lastUpdated: string;
-
 const API_VERSION = "v1";
 const BASE_URL = `https://balldontlie.io/api/${API_VERSION}`;
 const GAMES = `${BASE_URL}/games`;
+
+const TEAM_MAP = {
+  "ATL": 1,
+  "BOS": 2,
+  "BKN": 3,
+  "CHA": 4,
+  "CHI": 5,
+  "CLE": 6,
+  "DAL": 7,
+  "DEN": 8,
+  "DET": 9,
+  "GSW": 10,
+  "HOU": 11,
+  "IND": 12,
+  "LAC": 13,
+  "LAL": 14,
+  "MEM": 15,
+  "MIA": 16,
+  "MIL": 17,
+  "MIN": 18,
+  "NOP": 19,
+  "NYK": 20,
+  "OKC": 21,
+  "ORL": 22,
+  "PHI": 23,
+  "PHX": 24,
+  "POR": 25,
+  "SAC": 26,
+  "SAS": 27,
+  "TOR": 28,
+  "UTA": 29,
+  "WAS": 30,
+}
 
 interface Team {
   abbreviation: string,
@@ -77,7 +107,6 @@ export class Score {
 }
 
 const today = () => moment().format("YYYY-MM-DD");
-const now = () => moment().toISOString();
 
 export function fetchGames(teams: number[] | null = null): Promise<Game[]> {
   const params = {
@@ -86,8 +115,7 @@ export function fetchGames(teams: number[] | null = null): Promise<Game[]> {
   };
 
   return axios.get(GAMES, { params }).then(({ status, statusText, data }) => {
-    lastUpdated = now();
-    console.info(`GET ${GAMES} ${status} ${statusText} at ${lastUpdated}`);
+    console.info(`GET ${GAMES} ${status} ${statusText}`);
     return data.data;
   });
 }

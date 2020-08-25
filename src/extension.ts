@@ -7,9 +7,9 @@ import {
   StatusBarAlignment
 } from "vscode";
 import { fetchScores, updateTicker } from "./commands";
+import Manager from "./manger";
 
 // Global instance of the status bar ticker.
-export let ticker: StatusBarItem;
 
 export function activate({ subscriptions }: ExtensionContext) {
   console.info("NBA Ticker is active.");
@@ -18,14 +18,14 @@ export function activate({ subscriptions }: ExtensionContext) {
   subscriptions.push(commands.registerCommand("nba-ticker.fetchScores", fetchScores));
   subscriptions.push(commands.registerCommand("nba-ticker.updateTicker", updateTicker));
 
-  // Build and update the ticker.
-  ticker = buildTicker();
-  debugger;
+  // Build ticker and manager.
+  const ticker = buildTicker();
   subscriptions.push(ticker);
-  tickerPoll();
+  const manager = new Manager(ticker);
 
-  // Poll for scores.
-  scorePoll();
+  // Poll
+  tickerPoll(manager);
+  scorePoll(manager);
 }
 
 function buildTicker(): StatusBarItem {
@@ -34,18 +34,18 @@ function buildTicker(): StatusBarItem {
   return window.createStatusBarItem(alignment, priority);
 }
 
-function tickerPoll(): void {
-  commands.executeCommand("nba-ticker.updateTicker");
+function tickerPoll(manager: Manager): void {
+  commands.executeCommand("nba-ticker.updateTicker", manager);
   setTimeout(
-    () => tickerPoll(),
+    () => tickerPoll(manager),
     config("tickerDelaySeconds") * 1000
   );
 }
 
-function scorePoll(): void {
-  commands.executeCommand("nba-ticker.fetchScores");
+function scorePoll(manager: Manager): void {
+  commands.executeCommand("nba-ticker.fetchScores", manager);
   setTimeout(
-    () => scorePoll(),
+    () => scorePoll(manager),
     config("pollDelaySeconds") * 1000
   );
 }
