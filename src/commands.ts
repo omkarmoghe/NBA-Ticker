@@ -1,5 +1,5 @@
 import { fetchGames } from "./api/balldontlie";
-import Manager from "./models/Manger";
+import Manager from "./models/Manager";
 import { config } from "./extension";
 import Game from "./models/Game";
 import Score from "./models/Score";
