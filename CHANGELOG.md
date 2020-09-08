@@ -5,6 +5,11 @@ All notable changes to the "nba-ticker" extension will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2020-09-08
+### Changed
+- Updated default ticker display format.
+- Updated ticker tooltip to show relative time of update (e.g. `"5 minutes ago"`)
+
 ## [0.2.1] - 2020-08-25
 ### Added
 - Setting for teams

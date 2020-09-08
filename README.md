@@ -17,7 +17,7 @@ Install via the [VSCode Marketplace](https://marketplace.visualstudio.com/items?
 All settings are prefixed by with `"nba-ticker."`, so `"side"` becomes `"nba-ticker.side"` when editing as JSON.
 
 ### `"format"`
-Specifies how the game info should be displayed. Defaults to `"${visitorTeam} ${visitorScore} @ ${homeScore} ${homeTeam} - ${status}"`, which looks like `GSW 42 @ LAL 24 - 4:20 1st`. The available wildcards are:
+Specifies how the game info should be displayed. Defaults to `"${visitorTeam} ${visitorScore} : ${homeScore} ${homeTeam} @ ${status}"`, which looks like `GSW 42 : 24 LAL @ 4:20 1st`. The available wildcards are:
 - `${visitorTeam}`: The visiting team's abbreviated name, (e.g. `"GSW"`)
 - `${visitorScore}`: The visiting team's score
 - `${homeTeam}`: The home team's abbreviated name, (e.g. `"LAL"`)

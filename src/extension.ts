@@ -7,7 +7,7 @@ import {
   StatusBarAlignment
 } from "vscode";
 import { fetchScores, updateTicker } from "./commands";
-import Manager from "./manger";
+import Manager from "./models/Manger";
 
 // Global instance of the status bar ticker.
 

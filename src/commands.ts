@@ -1,6 +1,8 @@
-import { fetchGames, Game, Score } from "./balldontlie-api";
-import Manager from "./manger";
+import { fetchGames } from "./api/balldontlie";
+import Manager from "./models/Manger";
 import { config } from "./extension";
+import Game from "./models/Game";
+import Score from "./models/Score";
 
 export function fetchScores(manager: Manager): Promise<Manager> {
   const teamFilter = config("teamFilter") || [];

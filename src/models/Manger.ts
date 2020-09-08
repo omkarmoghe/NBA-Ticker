@@ -1,16 +1,14 @@
 import { StatusBarItem } from "vscode";
-import { Score } from "./balldontlie-api";
-import { config } from "./extension";
+import { config } from "../extension";
 import * as moment from "moment";
-
-const now: () => string = () => moment().toISOString();
+import Score from "./Score";
 
 export default class Manager {
   ticker: StatusBarItem;
   scores: Score[];
   currentPos: number = 0;
   teams: string[];
-  lastUpdated: string = "Waiting for games...";
+  lastUpdated: moment.Moment | null = null;
 
   constructor(ticker: StatusBarItem, scores: Score[] = []) {
     this.ticker = ticker;
@@ -20,8 +18,7 @@ export default class Manager {
 
   updateScores(newScores: Score[]) {
     this.scores = newScores;
-    this.lastUpdated = now();
-    this.ticker.tooltip = `Updated at ${this.lastUpdated}`;
+    this.lastUpdated = moment();
   }
 
   rollTicker() {
@@ -36,6 +33,12 @@ export default class Manager {
 
   setTicker(text: string) {
     this.ticker.text = text;
+    if (this.lastUpdated) {
+      this.ticker.tooltip = `Updated ${this.lastUpdated.fromNow()}.`;
+    } else {
+      this.ticker.tooltip = "Waiting for games...";
+    }
+
     this.ticker.show();
   }
 
