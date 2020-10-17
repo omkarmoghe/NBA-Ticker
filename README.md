@@ -24,8 +24,8 @@ All settings are prefixed by with `"nba-ticker."`, so `"side"` becomes `"nba-tic
 Specifies how the game info should be displayed. Defaults to `"${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}"`, which looks like `GSW 42 : 24 LAL @ 4:20 1st`. The available wildcards are:
 - `${vTeam}`: The visiting team's abbreviated name, (e.g. `"GSW"`)
 - `${vScore}`: The visiting team's score
-- `${homeTeam}`: The home team's abbreviated name, (e.g. `"LAL"`)
-- `${homeScore}`: The home team's score
+- `${hTeam}`: The home team's abbreviated name, (e.g. `"LAL"`)
+- `${hScore}`: The home team's score
 - `${status}`: The status of the game
   - If the game hasn't started yet, this will be the scheduled start time (e.g. `"9:30 PM"`) in your local UTC offset.
   - If the game is ongoing, this will be either `"<TIME LEFT IN PERIOD> <PERIOD>"` (e.g. `"4:20 1st"`), `End of 1st`, or `"Halftime"`
