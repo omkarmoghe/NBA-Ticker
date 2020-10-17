@@ -2,20 +2,24 @@ import * as moment from "moment";
 import Game from "./Game";
 
 export default class Score {
-  vTeam: string;
-  vScore: string;
-  hTeam: string;
+  details: string[] = [];
+  gameId: string;
   hScore: string;
+  hTeam: string;
   status: string;
   tipoff: moment.Moment;
-  details: string[] = [];
+  url: string;
+  vScore: string;
+  vTeam: string;
 
   constructor(game: Game) {
-    this.vTeam = game.vTeam.triCode;
-    this.vScore = game.vTeam.score.trim();
-    this.hTeam = game.hTeam.triCode;
+    this.gameId = game.gameId;
     this.hScore = game.hTeam.score.trim();
+    this.hTeam = game.hTeam.triCode;
+    this.vScore = game.vTeam.score.trim();
+    this.vTeam = game.vTeam.triCode;
     this.tipoff = moment(game.startTimeUTC);
+    this.url = `https://stats.nba.com/game/${this.gameId}`;
 
     // Determine status string.
     if (this.tipoff) {
@@ -61,7 +65,7 @@ export default class Score {
     }
   }
 
-  format(formatString: string) {
+  format(formatString: string): string {
     return formatString
       .replace(/\${vTeam}/gi, this.vTeam)
       .replace(/\${vScore}/gi, this.vScore)

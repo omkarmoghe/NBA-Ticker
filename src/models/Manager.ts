@@ -1,4 +1,4 @@
-import { StatusBarItem } from "vscode";
+import { StatusBarItem, Command, Uri } from "vscode";
 import { config } from "../extension";
 import * as moment from "moment";
 import Score from "./Score";
@@ -24,9 +24,15 @@ export default class Manager {
   rollTicker() {
     if (this.ticker && this.scores && this.scores.length > 0) {
       const score = this.scores[this.currentPos];
+      const command: Command = {
+        title: score.url,
+        command: "vscode.open",
+        arguments: [Uri.parse(score.url)],
+      }
       this.setTicker(
         score.format(config("format")),
-        [...score.details, this.humanLastUpdated()].join("\n")
+        [...score.details, this.humanLastUpdated()].join("\n"),
+        command
       );
       this.incrementPos();
     } else if (this.ticker) {
@@ -34,9 +40,14 @@ export default class Manager {
     }
   }
 
-  setTicker(text: string, tooltip: string = "") {
+  setTicker(text: string, tooltip: string | null = null, command: Command | null = null) {
     this.ticker.text = text;
-    this.ticker.tooltip = tooltip;
+    if (tooltip) {
+      this.ticker.tooltip = tooltip;
+    }
+    if (command) {
+      this.ticker.command = command;
+    }
 
     this.ticker.show();
   }
