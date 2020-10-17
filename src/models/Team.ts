@@ -1,9 +1,14 @@
+interface LineScore {
+  score: string,
+}
+
 export default interface Team {
-  abbreviation: string,
-  city: string,
-  conference: string,
-  division: string,
-  full_name: string,
-  id: number,
-  name: string,
+  linescore: LineScore[],
+  loss: string,
+  score: string,
+  seriesLoss?: string,
+  seriesWin?: string,
+  teamId: string,
+  triCode: string,
+  win: string,
 }

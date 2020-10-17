@@ -8,8 +8,7 @@ import {
 } from "vscode";
 import { fetchScores, updateTicker } from "./commands";
 import Manager from "./models/Manager";
-
-// Global instance of the status bar ticker.
+import { fetchGames } from "./api/nba";
 
 export function activate({ subscriptions }: ExtensionContext) {
   console.info("NBA Ticker is active.");
@@ -23,9 +22,11 @@ export function activate({ subscriptions }: ExtensionContext) {
   subscriptions.push(ticker);
   const manager = new Manager(ticker);
 
+  fetchGames();
+
   // Poll
   tickerPoll(manager);
-  scorePoll(manager);
+  scoreboardPoll(manager);
 }
 
 function buildTicker(): StatusBarItem {
@@ -45,13 +46,13 @@ function tickerPoll(manager: Manager): void {
   );
 }
 
-function scorePoll(manager: Manager): void {
+function scoreboardPoll(manager: Manager): void {
   commands.executeCommand("nba-ticker.fetchScores", manager).then(
     undefined,
     (e) => console.error(e.message)
   );
   setTimeout(
-    () => scorePoll(manager),
+    () => scoreboardPoll(manager),
     config("pollDelaySeconds") * 1000
   );
 }

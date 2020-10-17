@@ -22,22 +22,21 @@ export default class Manager {
   }
 
   rollTicker() {
-    if (this.ticker && this.scores) {
+    if (this.ticker && this.scores && this.scores.length > 0) {
       const score = this.scores[this.currentPos];
-      this.setTicker(score.format(config("format")));
+      this.setTicker(
+        score.format(config("format")),
+        [...score.details, this.humanLastUpdated()].join("\n")
+      );
       this.incrementPos();
     } else if (this.ticker) {
-      this.setTicker("No games today.");
+      this.setTicker("No games today.", this.humanLastUpdated());
     }
   }
 
-  setTicker(text: string) {
+  setTicker(text: string, tooltip: string = "") {
     this.ticker.text = text;
-    if (this.lastUpdated) {
-      this.ticker.tooltip = `Updated ${this.lastUpdated.fromNow()}.`;
-    } else {
-      this.ticker.tooltip = "Waiting for games...";
-    }
+    this.ticker.tooltip = tooltip;
 
     this.ticker.show();
   }
@@ -46,6 +45,14 @@ export default class Manager {
     this.currentPos++;
     if (this.currentPos >= this.scores.length) {
       this.currentPos = 0;
+    }
+  }
+
+  humanLastUpdated(): string {
+    if (this.lastUpdated) {
+      return `Updated ${this.lastUpdated.fromNow()}.`;
+    } else {
+      return "Waiting for games...";
     }
   }
 }

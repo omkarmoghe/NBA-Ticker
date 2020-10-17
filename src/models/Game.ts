@@ -1,15 +1,38 @@
 import Team from "./Team";
 
+interface Arena {
+  name: string;
+  city: string;
+  stateAbbr: string;
+}
+
+interface Nugget {
+  text: string,
+}
+
+interface Period {
+  current: number,
+  isEndOfPeriod: boolean,
+  isHalftime: boolean,
+}
+
+interface Playoffs {
+  gameNumInSeries: string,
+  roundNum: string,
+  seriesSummaryText: string,
+}
+
 export default interface Game {
-  id: number,
-  period: number,
-  date: string,
-  season: number,
-  postseason: boolean,
-  status: string,
-  time: string,
-  home_team: Team,
-  home_team_score: number,
-  visitor_team: Team,
-  visitor_team_score: number,
+  arena: Arena;
+  clock: string,
+  endTimeUTC?: string,
+  gameId: string,
+  hTeam: Team,
+  nugget: Nugget,
+  period: Period,
+  playoffs?: Playoffs,
+  seasonYear: string,
+  startTimeUTC?: string,
+  tags: string[],
+  vTeam: Team,
 }

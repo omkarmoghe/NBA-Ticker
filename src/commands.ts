@@ -1,13 +1,21 @@
-import { fetchGames } from "./api/balldontlie";
 import Manager from "./models/Manager";
 import { config } from "./extension";
 import Game from "./models/Game";
 import Score from "./models/Score";
+import { fetchGames } from "./api/nba";
 
 export function fetchScores(manager: Manager): Promise<Manager> {
   const teamFilter = config("teamFilter") || [];
-  return fetchGames(teamFilter)
-    .then((games) => buildScores(games))
+  return fetchGames()
+    .then((games) => {
+      if (teamFilter.length > 0) {
+        games = games.filter((game) => {
+          return teamFilter.includes(game.hTeam.triCode) || teamFilter.includes(game.vTeam.triCode);
+        });
+      }
+
+      return buildScores(games);
+    })
     .then((newScores) => {
       manager.updateScores(newScores);
       return manager;

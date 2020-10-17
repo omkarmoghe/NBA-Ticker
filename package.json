@@ -31,9 +31,9 @@
       "title": "NBA Ticker",
       "properties": {
         "nba-ticker.format": {
-          "markdownDescription": "Specifies how the game info should be displayed. Defaults to `\"${visitorTeam} ${visitorScore} : ${homeScore} ${homeTeam} - ${status}\"`, which looks like `GSW 42 : 24 LAL @ 4:20 1st`. The available wildcards are:\n- `${visitorTeam}`: The visiting team's abbreviated name, (e.g. `\"GSW\"`)\n- `${visitorScore}`: The visiting team's score\n- `${homeTeam}`: The home team's abbreviated name, (e.g. `\"LAL\"`)\n- `${homeScore}`: The home team's score\n- `${status}`: The status of the game\n  - If the game hasn't started yet, this will be the scheduled start time (e.g. `\"9:30 PM ET\"`)\n  - If the game is ongoing, this will be either `\"<TIME LEFT IN PERIOD> <PERIOD>\"` (e.g. `\"4:20 1st\"`), or `\"Halftime\"`\n  - If the game is over, this will be `\"Final\"`\n  - If the status is unknown, this will be `\"TBD\"`",
+          "markdownDescription": "Specifies how the game info should be displayed. Defaults to `\"${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}\"`, which looks like `GSW 42 : 24 LAL @ 4:20 1st`. The available wildcards are:\n- `${vTeam}`: The visiting team's abbreviated name, (e.g. `\"GSW\"`)\n- `${vScore}`: The visiting team's score\n- `${homeTeam}`: The home team's abbreviated name, (e.g. `\"LAL\"`)\n- `${homeScore}`: The home team's score\n- `${status}`: The status of the game\n  - If the game hasn't started yet, this will be the scheduled start time (e.g. `\"9:30 PM\"`) in your local UTC offset.\n  - If the game is ongoing, this will be either `\"<TIME LEFT IN PERIOD> <PERIOD>\"` (e.g. `\"4:20 1st\"`), `\"End of 1st\"`, or `\"Halftime\"`\n  - If the game is over, this will be `\"Final\"`\n  - If the status is unknown, this will be `\"TBD\"`",
           "type": "string",
-          "default": "${visitorTeam} ${visitorScore} : ${homeScore} ${homeTeam} @ ${status}"
+          "default": "${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}"
         },
         "nba-ticker.pollDelaySeconds": {
           "markdownDescription": "Specifies how long to wait before fetching new game data from the API. The [balldontlie API](https://www.balldontlie.io/#considerations-3) updates games every ~10 minutes, so polling faster than that is pointless. Defaults to `60` seconds, i.e. every minute.",

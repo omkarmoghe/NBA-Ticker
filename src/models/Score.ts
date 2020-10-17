@@ -1,23 +1,50 @@
+import * as moment from "moment";
 import Game from "./Game";
 
 export default class Score {
-  visitorTeam: string;
-  visitorScore: number;
-  homeTeam: string;
-  homeScore: number;
+  vTeam: string;
+  vScore: string;
+  hTeam: string;
+  hScore: string;
   status: string;
+  tipoff: moment.Moment;
+  details: string[] = [];
 
   constructor(game: Game) {
-    this.visitorTeam = game.visitor_team.abbreviation.trim();
-    this.visitorScore = game.visitor_team_score;
-    this.homeTeam = game.home_team.abbreviation.trim();
-    this.homeScore = game.home_team_score;
+    this.vTeam = game.vTeam.triCode;
+    this.vScore = game.vTeam.score.trim();
+    this.hTeam = game.hTeam.triCode;
+    this.hScore = game.hTeam.score.trim();
+    this.tipoff = moment(game.startTimeUTC);
+
     // Determine status string.
-    if (game.time.trim()) {
-      this.status = `${game.time.trim()} ${this.humanPeriod(game.period)}`;
+    if (this.tipoff) {
+      if (moment() <= this.tipoff) {
+        this.status = this.tipoff.format("h:mm A");
+      } else if (game.endTimeUTC && moment() > moment(game.endTimeUTC)) {
+        this.status = "Final"
+      } else if (game.period.isHalftime) {
+        this.status = "Halftime"
+      } else {
+        const period = this.humanPeriod(game.period.current);
+        if (game.period.isEndOfPeriod) {
+          this.status = `End of ${period}`;
+        } else {
+          this.status = `${game.clock.trim()} ${period}`;
+        }
+      }
     } else {
-      this.status = game.status.trim() || "TBD";
+      this.status = "TBD";
     }
+
+    // Set details
+    this.details.push(game.nugget.text);
+    if (game.playoffs) {
+      this.details.push(game.playoffs.seriesSummaryText.trim());
+      this.details.push(`Round ${game.playoffs.roundNum}, Game ${game.playoffs.gameNumInSeries}`);
+    }
+    this.details.push(`${this.vTeam} (${game.vTeam.win} - ${game.vTeam.loss}) @ ${this.hTeam} (${game.hTeam.win} - ${game.hTeam.loss})`);
+    this.details.push(`${game.arena.city}, ${game.arena.stateAbbr}`)
   }
 
   humanPeriod(period: number): string {
@@ -36,10 +63,10 @@ export default class Score {
 
   format(formatString: string) {
     return formatString
-      .replace(/\${visitorTeam}/gi, this.visitorTeam)
-      .replace(/\${visitorScore}/gi, this.visitorScore.toString())
-      .replace(/\${homeTeam}/gi, this.homeTeam)
-      .replace(/\${homeScore}/gi, this.homeScore.toString())
+      .replace(/\${vTeam}/gi, this.vTeam)
+      .replace(/\${vScore}/gi, this.vScore)
+      .replace(/\${hTeam}/gi, this.hTeam)
+      .replace(/\${hScore}/gi, this.hScore)
       .replace(/\${status}/gi, this.status);
   }
 }

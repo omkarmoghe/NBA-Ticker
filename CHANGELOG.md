@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.0] - 2020-10-17
 ### Changed
 - Migrated from the balldontlie API to official(?) data.nba.net API
+- Updated status
+### Added
+- Huge update to the tooltip with a ton of game and series details
 
 ## [0.2.5] - 2020-10-17
 ### Changed
