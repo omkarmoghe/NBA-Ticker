@@ -5,6 +5,10 @@ All notable changes to the "nba-ticker" extension will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2020-10-17
+### Changed
+- Fixed images on Marketplace page
+
 ## [0.3.0] - 2020-10-17
 ### Changed
 - Migrated from the balldontlie API to official(?) data.nba.net API
