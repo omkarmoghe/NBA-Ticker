@@ -36,7 +36,7 @@
           "default": "${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}"
         },
         "nba-ticker.pollDelaySeconds": {
-          "markdownDescription": "Specifies how long to wait before fetching new game data from the API. The [balldontlie API](https://www.balldontlie.io/#considerations-3) updates games every ~10 minutes, so polling faster than that is pointless. Defaults to `60` seconds, i.e. every minute.",
+          "markdownDescription": "Specifies how long to wait before fetching new game data from the API. Defaults to `60` seconds, i.e. every minute. Allowed values are [`10`, `600`].",
           "type": "number",
           "default": 60,
           "minimum": 5,
@@ -49,7 +49,7 @@
           "minimum": 0
         },
         "nba-ticker.side": {
-          "description": "Specifies which side of the status bar to display the ticker.",
+          "description": "Specifies which side of the status bar to display the ticker. Options are `\"left\"` or `\"right\"`.",
           "type": "string",
           "enum": [
             "left",
@@ -58,7 +58,7 @@
           "default": "right"
         },
         "nba-ticker.teamFilter": {
-          "markdownDescription": "Specifies which teams games are shown for; other teams are ignored. All teams will be shown if the array is empty (`[]`). Use abbreviated team names (e.g. `\"GSW\"`, `\"LAL\"`).",
+          "markdownDescription": "Specifies which teams games are shown for; other teams are ignored. All teams will be shown if the array is empty (`[]`). **Use abbreviated team names** (e.g. `[\"GSW\", \"LAL\"]`).",
           "type": "array",
           "default": [],
           "maxItems": 30

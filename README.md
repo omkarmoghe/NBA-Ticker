@@ -42,7 +42,7 @@ Specifies the ticker's priority relative to other items in the status bar. **Hig
 Specifies which side of the status bar to display the ticker. Options are `"left"` or `"right"`.
 
 ### `"teamFilter"`
-Specifies which teams games are shown for; other teams are ignored. All teams will be shown if the array is empty (`[]`). **Use abbreviated team names** (e.g. `"GSW"`, `"LAL"`).
+Specifies which teams games are shown for; other teams are ignored. All teams will be shown if the array is empty (`[]`). **Use abbreviated team names** (e.g. `["GSW", "LAL"]`).
 
 ### `"tickerDelaySeconds"`
 Specifies how many seconds to show each score. Defaults to `10` seconds. Allowed values are [`1`, `60`].
