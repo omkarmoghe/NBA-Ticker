@@ -4,9 +4,9 @@ Adds live(ish) NBA scores for today's games in your status bar using the data.nb
 
 Versions _before_ `0.3.0` were built using the amazing [balldontlie API](https://www.balldontlie.io/#introduction). If you like this extension, please consider [donating](https://www.patreon.com/balldontlie) to them.
 
-![Status bar ticker](./images/demo-gif-1.gif)
+![Status bar ticker](https://i.imgur.com/9UBEw9f.gif)
 
-![Tooltip](./images/tooltip-1.png)
+![Tooltip](https://i.imgur.com/dW8HKoh.png)
 
 ## Requirements
 
