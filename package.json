@@ -39,7 +39,7 @@
           "markdownDescription": "Specifies how long to wait before fetching new game data from the API. Defaults to `60` seconds, i.e. every minute. Allowed values are [`10`, `600`].",
           "type": "number",
           "default": 60,
-          "minimum": 5,
+          "minimum": 10,
           "maximum": 600
         },
         "nba-ticker.priority": {
