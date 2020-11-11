@@ -1,5 +1,7 @@
 # NBA Ticker 🏀
 
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/omkarmoghe.nba-ticker?label=Release)
+
 Adds live(ish) NBA scores for today's games in your status bar using the data.nba.net API.
 
 Versions **before** `0.3.0` were built using the amazing [balldontlie API](https://www.balldontlie.io/#introduction). If you like this extension, please consider [donating](https://www.patreon.com/balldontlie) to them.
