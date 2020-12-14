@@ -4,7 +4,7 @@
   "description": "Simple live(ish) NBA scores in your status bar.",
   "version": "0.3.5",
   "engines": {
-    "vscode": "^1.48"
+    "vscode": "^1.48.0"
   },
   "publisher": "omkarmoghe",
   "license": "See license in LICENSE.",
