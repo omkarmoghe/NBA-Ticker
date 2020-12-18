@@ -41,13 +41,20 @@ export default class Score {
       this.status = "TBD";
     }
 
-    // Set details
-    this.details.push(game.nugget.text);
+    // Set game details.
+    if (game.nugget.text.trim().length > 0) {
+      this.details.push(game.nugget.text.trim());
+    }
+    // Set playoff details.
     if (game.playoffs) {
-      this.details.push(game.playoffs.seriesSummaryText.trim());
+      if (game.playoffs.seriesSummaryText.trim().length > 0) {
+        this.details.push(game.playoffs.seriesSummaryText.trim());
+      }
       this.details.push(`Round ${game.playoffs.roundNum}, Game ${game.playoffs.gameNumInSeries}`);
     }
+    // Set team details.
     this.details.push(`${this.vTeam} (${game.vTeam.win} - ${game.vTeam.loss}) @ ${this.hTeam} (${game.hTeam.win} - ${game.hTeam.loss})`);
+    // Set location details.
     this.details.push(`${game.arena.city}, ${game.arena.stateAbbr}`)
   }
 
