@@ -2,7 +2,7 @@
   "name": "nba-ticker",
   "displayName": "NBA Ticker",
   "description": "Simple live(ish) NBA scores in your status bar.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "engines": {
     "vscode": "^1.48.0"
   },
@@ -35,7 +35,7 @@
           "type": "string",
           "default": "${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}"
         },
-        "nba-ticker.hover" : {
+        "nba-ticker.hover": {
           "markdownDescription": "Specifies what to show when hovering over the ticker. Options are `\"details\"` (details about the current game) or `\"scoreboard\"` (all scores).",
           "type": "string",
           "enum": [
