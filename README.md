@@ -30,9 +30,12 @@ Specifies how the game info should be displayed. Defaults to `"${vTeam} ${vScore
 - `${hScore}`: The home team's score
 - `${status}`: The status of the game
   - If the game hasn't started yet, this will be the scheduled start time (e.g. `"9:30 PM"`) in your local UTC offset.
-  - If the game is ongoing, this will be either `"<TIME LEFT IN PERIOD> <PERIOD>"` (e.g. `"4:20 1st"`), `End of 1st`, or `"Halftime"`
+  - If the game is ongoing, this will be either `"<TIME LEFT IN PERIOD> <PERIOD>"` (e.g. `"4:20 1st"`), `"End of 1st"`, or `"Halftime"`
   - If the game is over, this will be `"Final"`
   - If the status is unknown, this will be `"TBD"`
+
+### `"hover"`
+Specifies what to show when hovering over the ticker. Options are `"details"` (details about the current game) or `"scoreboard"` (all scores).
 
 ### `"pollDelaySeconds"`
 Specifies how long to wait before fetching new game data from the API. Defaults to `60` seconds, i.e. every minute. Allowed values are [`10`, `600`].

@@ -35,6 +35,15 @@
           "type": "string",
           "default": "${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}"
         },
+        "nba-ticker.hover" : {
+          "markdownDescription": "Specifies what to show when hovering over the ticker. Options are `\"details\"` (details about the current game) or `\"scoreboard\"` (all scores).",
+          "type": "string",
+          "enum": [
+            "details",
+            "scoreboard"
+          ],
+          "default": "details"
+        },
         "nba-ticker.pollDelaySeconds": {
           "markdownDescription": "Specifies how long to wait before fetching new game data from the API. Defaults to `60` seconds, i.e. every minute. Allowed values are [`10`, `600`].",
           "type": "number",
@@ -55,7 +64,7 @@
             "left",
             "right"
           ],
-          "default": "right"
+          "default": "left"
         },
         "nba-ticker.teamFilter": {
           "markdownDescription": "Specifies which teams games are shown for; other teams are ignored. All teams will be shown if the array is empty (`[]`). **Use abbreviated team names** (e.g. `[\"GSW\", \"LAL\"]`).",
@@ -95,7 +104,7 @@
     "vscode-test": "^1.4"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "moment": "^2.29.1"
   }
 }

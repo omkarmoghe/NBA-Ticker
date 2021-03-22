@@ -16,6 +16,10 @@ export default class Manager {
     this.teams = config("teamFilter");
   }
 
+  currentScore(): Score {
+    return this.scores[this.currentPos];
+  }
+
   updateScores(newScores: Score[]) {
     this.scores = newScores;
     this.lastUpdated = moment();
@@ -23,17 +27,13 @@ export default class Manager {
 
   rollTicker() {
     if (this.ticker && this.scores && this.scores.length > 0) {
-      const score = this.scores[this.currentPos];
+      const score = this.currentScore();
       const command: Command = {
         title: score.url,
         command: "vscode.open",
         arguments: [Uri.parse(score.url)],
       }
-      this.setTicker(
-        score.format(config("format")),
-        [...score.details, this.humanLastUpdated()].join("\n"),
-        command
-      );
+      this.setTicker(score.format(config("format")), this.getHover(), command);
       this.incrementPos();
     } else if (this.ticker) {
       this.setTicker("No games today.", this.humanLastUpdated());
@@ -65,5 +65,20 @@ export default class Manager {
     } else {
       return "Waiting for games...";
     }
+  }
+
+  getHover(): string {
+    const hoverContent: string[] = [];
+
+    if (config("hover") === "details") {
+      hoverContent.push(...this.currentScore().details)
+    } else if (config("hover") === "scoreboard") {
+      this.scores.forEach((score) => {
+        hoverContent.push(score.format(config("format")))
+      });
+    }
+
+    hoverContent.push(this.humanLastUpdated());
+    return hoverContent.join("\n");
   }
 }
