@@ -8,7 +8,9 @@ Versions **before** `0.3.0` were built using the amazing [balldontlie API](https
 
 ![Status bar ticker](https://i.imgur.com/9UBEw9f.gif)
 
-![Tooltip](https://i.imgur.com/dW8HKoh.png)
+![Game details](https://i.imgur.com/dW8HKoh.png)
+
+![Scoreboard](https://i.imgur.com/QAJuS9T.png)
 
 ## Requirements
 
