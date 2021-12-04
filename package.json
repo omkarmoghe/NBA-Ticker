@@ -1,8 +1,8 @@
 {
   "name": "nba-ticker",
   "displayName": "NBA Ticker",
-  "description": "Simple live(ish) NBA scores in your status bar.",
-  "version": "0.4.1",
+  "description": "Live NBA scores in your status bar.",
+  "version": "0.4.2",
   "engines": {
     "vscode": "^1.48.0"
   },
@@ -31,9 +31,9 @@
       "title": "NBA Ticker",
       "properties": {
         "nba-ticker.format": {
-          "markdownDescription": "Specifies how the game info should be displayed. Defaults to `\"${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}\"`, which looks like `GSW 42 : 24 LAL @ 4:20 1st`. The available wildcards are:\n- `${vTeam}`: The visiting team's abbreviated name, (e.g. `\"GSW\"`)\n- `${vScore}`: The visiting team's score\n- `${hTeam}`: The home team's abbreviated name, (e.g. `\"LAL\"`)\n- `${hScore}`: The home team's score\n- `${status}`: The status of the game\n  - If the game hasn't started yet, this will be the scheduled start time (e.g. `\"9:30 PM\"`) in your local UTC offset.\n  - If the game is ongoing, this will be either `\"<TIME LEFT IN PERIOD> <PERIOD>\"` (e.g. `\"4:20 1st\"`), `\"End of 1st\"`, or `\"Halftime\"`\n  - If the game is over, this will be `\"Final\"`\n  - If the status is unknown, this will be `\"TBD\"`",
+          "markdownDescription": "Specifies how the game info should be displayed. Defaults to `\"${vTeam} ${vScore} : ${hScore} ${hTeam}, ${status}\"`, which looks like `GSW 42 : 24 LAL, 4:20 1st`. The available wildcards are:\n- `${vTeam}`: The visiting team's abbreviated name, (e.g. `\"GSW\"`)\n- `${vScore}`: The visiting team's score\n- `${hTeam}`: The home team's abbreviated name, (e.g. `\"LAL\"`)\n- `${hScore}`: The home team's score\n- `${status}`: The status of the game\n  - If the game hasn't started yet, this will be the scheduled start time (e.g. `\"9:30 PM\"`) in your local UTC offset.\n  - If the game is ongoing, this will be either `\"<TIME LEFT IN PERIOD> <PERIOD>\"` (e.g. `\"4:20 1st\"`), `\"End of 1st\"`, or `\"Halftime\"`\n  - If the game is over, this will be `\"Final\"`\n  - If the status is unknown, this will be `\"TBD\"`",
           "type": "string",
-          "default": "${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}"
+          "default": "${vTeam} ${vScore} - ${hScore} ${hTeam}, ${status}"
         },
         "nba-ticker.hover": {
           "markdownDescription": "Specifies what to show when hovering over the ticker. Options are `\"details\"` (details about the current game) or `\"scoreboard\"` (all scores).",
@@ -104,7 +104,7 @@
     "vscode-test": "^1.4"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.24",
     "moment": "^2.29.1"
   }
 }
