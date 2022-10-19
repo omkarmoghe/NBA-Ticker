@@ -9,6 +9,7 @@ export default class Score {
   status: string;
   tipoff: moment.Moment;
   url: string;
+  urlLive: boolean;
   vScore: string;
   vTeam: string;
 
@@ -20,10 +21,11 @@ export default class Score {
     this.vTeam = game.vTeam.triCode;
     this.tipoff = moment(game.startTimeUTC);
     this.url = `https://stats.nba.com/game/${this.gameId}`;
+    this.urlLive = moment() >= this.tipoff
 
     // Determine status string.
     if (this.tipoff) {
-      if (moment() <= this.tipoff) {
+      if (moment() < this.tipoff) {
         this.status = this.tipoff.format("h:mm A");
       } else if (game.endTimeUTC && moment() > moment(game.endTimeUTC)) {
         this.status = "Final"
