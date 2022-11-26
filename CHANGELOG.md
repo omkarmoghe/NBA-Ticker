@@ -5,10 +5,19 @@ All notable changes to the "nba-ticker" extension will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.3] - 2022-11-26
+### Changed
+- Bumped dependencies
+- Updated NBA API protocol from HTTP -> HTTPS
+- Fixed issue where links were broken for games that hadn't started
+- Fixed issue where games that had just started would render as `0th`. This now displays the tipoff time until a valid period [1-4] and game clock is available.
+
 ## [0.4.2] - 2021-12-04
 ### Changed
 - Bumped dependencies
-- Updated default format `@` -> `, `, `:` -> `-`
+- Updated default format:
+  - `@` -> `, `
+  - `:` -> `-`
 - Updated description
 
 ## [0.4.1] - 2021-03-21
