@@ -28,7 +28,7 @@ export default class Manager {
   rollTicker() {
     if (this.ticker && this.scores && this.scores.length > 0) {
       const score = this.currentScore();
-      const command: Command = score.urlLive ? {
+      const command: Command | null = score.urlLive ? {
         title: score.url,
         command: "vscode.open",
         arguments: [Uri.parse(score.url)],
