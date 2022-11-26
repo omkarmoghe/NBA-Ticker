@@ -60,3 +60,7 @@ Specifies how many seconds to show each score. Defaults to `10` seconds. Allowed
 Updates as fast as the data.nba.net API does. For versions before `0.3.0`, the [balldontlie API](https://www.balldontlie.io/#considerations-3) updates games every ~10 minutes.
 
 ## [Changelog](./CHANGELOG.md)
+
+## Credits
+
+Icon by [Cahya Kurniawa](https://www.iconfinder.com/sikeystudio) via [Iconfinder](https://www.iconfinder.com/).
