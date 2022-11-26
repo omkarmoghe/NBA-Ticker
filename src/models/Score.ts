@@ -23,25 +23,7 @@ export default class Score {
     this.url = `https://stats.nba.com/game/${this.gameId}`;
     this.urlLive = moment() >= this.tipoff
 
-    // Determine status string.
-    if (this.tipoff) {
-      if (moment() < this.tipoff) {
-        this.status = this.tipoff.format("h:mm A");
-      } else if (game.endTimeUTC && moment() > moment(game.endTimeUTC)) {
-        this.status = "Final"
-      } else if (game.period.isHalftime) {
-        this.status = "Halftime"
-      } else {
-        const period = this.humanPeriod(game.period.current);
-        if (game.period.isEndOfPeriod) {
-          this.status = `End of ${period}`;
-        } else {
-          this.status = `${game.clock.trim()} ${period}`;
-        }
-      }
-    } else {
-      this.status = "TBD";
-    }
+    this.status = this.buildStatus(game);
 
     // Set game details.
     if (game.nugget.text.trim().length > 0) {
@@ -81,5 +63,29 @@ export default class Score {
       .replace(/\${hTeam}/gi, this.hTeam)
       .replace(/\${hScore}/gi, this.hScore)
       .replace(/\${status}/gi, this.status);
+  }
+
+  // Determine status string.
+  buildStatus(game: Game): string {
+    if (this.tipoff) {
+      if (moment() < this.tipoff) {
+        return this.tipoff.format("h:mm A");
+      } else if (game.endTimeUTC && moment() > moment(game.endTimeUTC)) {
+        return "Final";
+      } else if (game.period.isHalftime) {
+        return "Halftime";
+      } else if (game.period.current > 0) {
+        const period = this.humanPeriod(game.period.current);
+        if (game.period.isEndOfPeriod) {
+          return `End of ${period}`;
+        } else {
+          return `${game.clock.trim()} ${period}`;
+        }
+      } else {
+        return this.tipoff.format("h:mm A");
+      }
+    } else {
+      return "TBD";
+    }
   }
 }
