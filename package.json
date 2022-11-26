@@ -15,7 +15,8 @@
     "nba",
     "live",
     "scores",
-    "ticker"
+    "ticker",
+    "basketball"
   ],
   "icon": "images/icon.png",
   "repository": {
