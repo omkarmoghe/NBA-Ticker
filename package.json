@@ -2,7 +2,7 @@
   "name": "nba-ticker",
   "displayName": "NBA Ticker (Live Scores)",
   "description": "Live NBA scores in your status bar.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "engines": {
     "vscode": "^1.48.0"
   },
