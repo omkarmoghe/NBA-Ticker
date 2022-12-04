@@ -10,7 +10,7 @@ export function fetchScores(manager: Manager): Promise<Manager> {
     .then((games) => {
       if (teamFilter.length > 0) {
         games = games.filter((game) => {
-          return teamFilter.includes(game.hTeam.triCode) || teamFilter.includes(game.vTeam.triCode);
+          return teamFilter.includes(game.awayTeam.teamTricode) || teamFilter.includes(game.homeTeam.teamTricode);
         });
       }
 

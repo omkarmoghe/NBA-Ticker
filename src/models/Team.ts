@@ -1,14 +1,16 @@
-interface LineScore {
+interface Period {
+  period: number,
   score: string,
 }
 
 export default interface Team {
-  linescore: LineScore[],
-  loss: string,
-  score: string,
-  seriesLoss?: string,
-  seriesWin?: string,
-  teamId: string,
-  triCode: string,
-  win: string,
+  losses: number,
+  periods: Period[];
+  score: number,
+  seed?: number,
+  teamCity: string,
+  teamId: number,
+  teamName: string,
+  teamTricode: string,
+  wins: number;
 }

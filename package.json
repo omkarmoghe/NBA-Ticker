@@ -2,7 +2,7 @@
   "name": "nba-ticker",
   "displayName": "NBA Ticker (Live Scores)",
   "description": "Live NBA scores in your status bar.",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "engines": {
     "vscode": "^1.48.0"
   },
@@ -43,7 +43,7 @@
             "details",
             "scoreboard"
           ],
-          "default": "details"
+          "default": "scoreboard"
         },
         "nba-ticker.pollDelaySeconds": {
           "markdownDescription": "Specifies how long to wait before fetching new game data from the API. Defaults to `60` seconds, i.e. every minute. Allowed values are [`10`, `600`].",
