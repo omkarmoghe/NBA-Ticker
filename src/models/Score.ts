@@ -69,7 +69,7 @@ export default class Score {
   // Determine status string.
   buildStatus(game: Game): string {
     if (this.tipoff) {
-      if (moment() < this.tipoff) {
+      if (moment() < this.tipoff || game.period < 1) {
         return this.tipoff.format("h:mm A");
       } else {
         return game.gameStatusText;
