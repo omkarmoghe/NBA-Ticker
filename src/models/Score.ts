@@ -29,10 +29,10 @@ export default class Score {
 
     // Set playoff details.
     if (game.seriesGameNumber) {
-      this.details.push(`Game ${game.seriesGameNumber}`);
+      this.details.push(game.seriesGameNumber);
     }
     if (game.seriesText) {
-      this.details.push(`Game ${game.seriesText}`);
+      this.details.push(game.seriesText);
     }
     // Set team details.
     this.details.push(
