@@ -5,6 +5,13 @@ All notable changes to the "nba-ticker" extension will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2023-05-19
+### Added
+- New `Open Game` command to open a game's page from the command palette.
+
+### Changed
+- Dependency updates
+
 ## [0.5.2] - 2022-12-03
 ### Changed
 - Added additional check to see if the game period has actually started.

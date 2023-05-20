@@ -1,8 +1,10 @@
+import { Uri, commands, window } from "vscode";
 import Manager from "./models/Manager";
 import { config } from "./extension";
 import Game from "./models/Game";
 import Score from "./models/Score";
 import { fetchGames } from "./api/nba";
+import { QuickPickItem } from "vscode";
 
 export function fetchScores(manager: Manager): Promise<Manager> {
   const teamFilter = config("teamFilter") || [];
@@ -31,4 +33,28 @@ function buildScores(games: Game[]): Score[] {
 export function updateTicker(manager: Manager): Manager {
   manager.rollTicker();
   return manager;
+}
+
+// Open a page for a game.
+interface QuickPickGameItem extends QuickPickItem {
+  uri: Uri;
+}
+export function openGame(): void {
+  fetchGames()
+    .then((games) => {
+      const options: QuickPickGameItem[] = buildScores(games).map((score) => (
+        {
+          description: score.status,
+          detail: score.details.join(". "),
+          label: `${score.awayTeam} @ ${score.homeTeam}`,
+          uri: score.uri,
+        }
+      ));
+      window.showQuickPick(options, { canPickMany: false })
+        .then((selectedGameItem) => {
+          if (selectedGameItem) {
+            return commands.executeCommand("vscode.open", selectedGameItem.uri);
+          }
+        });
+    });
 }

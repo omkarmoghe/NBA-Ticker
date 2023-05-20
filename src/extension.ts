@@ -6,7 +6,7 @@ import {
   StatusBarItem,
   StatusBarAlignment
 } from "vscode";
-import { fetchScores, updateTicker } from "./commands";
+import { fetchScores, updateTicker, openGame } from "./commands";
 import Manager from "./models/Manager";
 import { fetchGames } from "./api/nba";
 
@@ -16,6 +16,7 @@ export function activate({ subscriptions }: ExtensionContext) {
   // Register commands.
   subscriptions.push(commands.registerCommand("nba-ticker.fetchScores", fetchScores));
   subscriptions.push(commands.registerCommand("nba-ticker.updateTicker", updateTicker));
+  subscriptions.push(commands.registerCommand("nba-ticker.openGame", openGame));
 
   // Build ticker and manager.
   const ticker = buildTicker();

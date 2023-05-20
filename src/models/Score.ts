@@ -1,5 +1,7 @@
 import * as moment from "moment";
 import Game from "./Game";
+import { Uri } from "vscode";
+import { buildGameUri } from "../api/nba";
 
 export default class Score {
   awayScore: number;
@@ -10,8 +12,8 @@ export default class Score {
   homeTeam: string;
   status: string;
   tipoff: moment.Moment;
-  url: string;
-  urlLive: boolean;
+  uri: Uri;
+  uriLive: boolean;
 
   constructor(game: Game) {
     this.gameId = game.gameId;
@@ -22,8 +24,8 @@ export default class Score {
     this.homeTeam = game.homeTeam.teamTricode;
     this.tipoff = moment(game.gameTimeUTC);
 
-    this.url = `https://www.nba.com/game/${this.awayTeam}-vs-${this.homeTeam}-${this.gameId}`.toLowerCase();
-    this.urlLive = moment() >= this.tipoff
+    this.uri = buildGameUri(game);
+    this.uriLive = moment() >= this.tipoff
 
     this.status = this.buildStatus(game);
 

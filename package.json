@@ -2,7 +2,7 @@
   "name": "nba-ticker",
   "displayName": "NBA Ticker (Live Scores)",
   "description": "Live NBA scores in your status bar.",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -28,6 +28,12 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "nba-ticker.openGame",
+        "title": "NBA Ticker: Open Game"
+      }
+    ],
     "configuration": {
       "title": "NBA Ticker",
       "properties": {
