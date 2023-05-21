@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as moment from "moment";
+import * as dayjs from "dayjs";
 import Game from "../models/Game";
 
 const API_VERSION: Readonly<string> = "v1";
@@ -39,7 +39,7 @@ const teamMap: Readonly<Record<string, number>> = {
   WAS: 30,
 };
 
-const today = () => moment().format("YYYY-MM-DD");
+const today = () => dayjs().format("YYYY-MM-DD");
 
 export function fetchGames(teams: string[] = []): Promise<Game[]> {
   const params: Record<string, string[] | number[]> = {

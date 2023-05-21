@@ -23,8 +23,6 @@ export function activate({ subscriptions }: ExtensionContext) {
   subscriptions.push(ticker);
   const manager = new Manager(ticker);
 
-  fetchGames();
-
   // Poll
   tickerPoll(manager);
   scoreboardPoll(manager);

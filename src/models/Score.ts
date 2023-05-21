@@ -1,4 +1,4 @@
-import * as moment from "moment";
+import * as dayjs from "dayjs";
 import Game from "./Game";
 import { Uri } from "vscode";
 import { buildGameUri } from "../api/nba";
@@ -11,7 +11,7 @@ export default class Score {
   homeScore: number;
   homeTeam: string;
   status: string;
-  tipoff: moment.Moment;
+  tipoff: dayjs.Dayjs;
   uri: Uri;
   uriLive: boolean;
 
@@ -22,10 +22,10 @@ export default class Score {
     this.awayTeam = game.awayTeam.teamTricode;
     this.homeScore = game.homeTeam.score;
     this.homeTeam = game.homeTeam.teamTricode;
-    this.tipoff = moment(game.gameTimeUTC);
+    this.tipoff = dayjs(game.gameTimeUTC);
 
     this.uri = buildGameUri(game);
-    this.uriLive = moment() >= this.tipoff
+    this.uriLive = dayjs() >= this.tipoff
 
     this.status = this.buildStatus(game);
 
@@ -71,7 +71,7 @@ export default class Score {
   // Determine status string.
   buildStatus(game: Game): string {
     if (this.tipoff) {
-      if (moment() < this.tipoff || game.period < 1) {
+      if (dayjs() < this.tipoff || game.period < 1) {
         return this.tipoff.format("h:mm A");
       } else {
         return game.gameStatusText;

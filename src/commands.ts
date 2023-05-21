@@ -6,22 +6,23 @@ import Score from "./models/Score";
 import { fetchGames } from "./api/nba";
 import { QuickPickItem } from "vscode";
 
-export function fetchScores(manager: Manager): Promise<Manager> {
-  const teamFilter = config("teamFilter") || [];
-  return fetchGames()
-    .then((games) => {
-      if (teamFilter.length > 0) {
-        games = games.filter((game) => {
-          return teamFilter.includes(game.awayTeam.teamTricode) || teamFilter.includes(game.homeTeam.teamTricode);
-        });
-      }
+export async function fetchScores(manager: Manager): Promise<Manager> {
+  if (manager.allGamesFinal()) {
+    return manager;
+  }
 
-      return buildScores(games);
-    })
-    .then((newScores) => {
-      manager.updateScores(newScores);
-      return manager;
+  let games = await fetchGames();
+  const teamFilter = config("teamFilter") || [];
+  if (teamFilter.length > 0) {
+    games = games.filter((game) => {
+      return teamFilter.includes(game.awayTeam.teamTricode) || teamFilter.includes(game.homeTeam.teamTricode);
     });
+  }
+
+  const newScores = buildScores(games);
+  manager.updateScores(newScores);
+
+  return manager;
 }
 
 // Builds a list of `Scores` from a list of `Games`.

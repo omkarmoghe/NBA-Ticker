@@ -1,14 +1,17 @@
 import { StatusBarItem, Command } from "vscode";
 import { config } from "../extension";
-import * as moment from "moment";
+import * as dayjs from "dayjs";
+import * as relativeTime from 'dayjs/plugin/relativeTime';
 import Score from "./Score";
+
+dayjs.extend(relativeTime);
 
 export default class Manager {
   ticker: StatusBarItem;
   scores: Score[];
   currentPos: number = 0;
   teams: string[];
-  lastUpdated: moment.Moment | null = null;
+  lastUpdated: dayjs.Dayjs | null = null;
 
   constructor(ticker: StatusBarItem, scores: Score[] = []) {
     this.ticker = ticker;
@@ -22,7 +25,13 @@ export default class Manager {
 
   updateScores(newScores: Score[]) {
     this.scores = newScores;
-    this.lastUpdated = moment();
+    this.lastUpdated = dayjs();
+  }
+
+  allGamesFinal(): boolean {
+    return this.scores.length > 0 &&
+      this.scores.every((score) => (score.status === "Final")) &&
+      dayjs().diff(this.lastUpdated, "day") >= 1;
   }
 
   rollTicker() {
