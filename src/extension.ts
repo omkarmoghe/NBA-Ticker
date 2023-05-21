@@ -8,7 +8,6 @@ import {
 } from "vscode";
 import { fetchScores, updateTicker, openGame } from "./commands";
 import Manager from "./models/Manager";
-import { fetchGames } from "./api/nba";
 
 export function activate({ subscriptions }: ExtensionContext) {
   console.info("NBA Ticker is active.");
