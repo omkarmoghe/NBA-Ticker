@@ -111,7 +111,7 @@
     "vscode-test": "^1.4"
   },
   "dependencies": {
-    "axios": "^1.4",
+    "axios": "^1.5",
     "dayjs": "^1.11"
   }
 }
