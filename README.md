@@ -2,14 +2,11 @@
 
 ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/omkarmoghe.nba-ticker?label=Release)
 
-Adds live(ish) NBA scores for today's games in your status bar using the data.nba.net API.
-
-Versions **before** `0.3.0` were built using the amazing [balldontlie API](https://www.balldontlie.io/#introduction). If you like this extension, please consider [donating](https://www.patreon.com/balldontlie) to them.
+Adds live NBA scores for today's games in your status bar using the data.nba.net API.
 
 ![Status bar ticker](https://i.imgur.com/EfQzKgb.gif)
 
 ![Game details](https://i.imgur.com/dW8HKoh.png)
-
 ![Scoreboard](https://i.imgur.com/QAJuS9T.png)
 
 ## Requirements
@@ -59,11 +56,12 @@ Specifies how many seconds to show each score. Defaults to `10` seconds. Allowed
 
 ## FAQ
 
-### What is "live(ish)"?
-Updates as fast as the data.nba.net API does. For versions before `0.3.0`, the [balldontlie API](https://www.balldontlie.io/#considerations-3) updates games every ~10 minutes.
+### How fast is "live"?
+- All versions >= `0.3.0` (including current): scores update as fast as the data.nba.net API.
+- For versions < `0.3.0`: scores update every ~10 minutes.
 
 ## [Changelog](./CHANGELOG.md)
 
 ## Credits
-
-Icon by [Cahya Kurniawa](https://www.iconfinder.com/sikeystudio) via [Iconfinder](https://www.iconfinder.com/).
+- Versions before `0.3.0` were built using the amazing [balldontlie API](https://www.balldontlie.io/#introduction). If you like this extension, please consider [donating](https://www.patreon.com/balldontlie) to them.
+- Icon by [Cahya Kurniawa](https://www.iconfinder.com/sikeystudio) via [Iconfinder](https://www.iconfinder.com/).
