@@ -66,6 +66,10 @@ export default class Manager {
     if (this.currentPos >= this.scores.length) {
       this.currentPos = 0;
     }
+
+    if (config("hideFinalScoresInStatusBar") === true && this.currentScore().final) {
+      this.incrementPos();
+    }
   }
 
   humanLastUpdated(): string {
