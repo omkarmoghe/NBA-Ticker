@@ -42,12 +42,21 @@
           "type": "string",
           "default": "${vTeam} ${vScore} - ${hScore} ${hTeam}, ${status}"
         },
+        "nba-ticker.hideFinalScoresInStatusBar": {
+          "markdownDescription": "If checked, final scores will be hidden from the status bar. Final scores will always be visible in the hover when `scoreboard` is selected.",
+          "type": "boolean",
+          "default": false
+        },
         "nba-ticker.hover": {
           "markdownDescription": "Specifies what to show when hovering over the ticker. Options are `\"details\"` (details about the current game) or `\"scoreboard\"` (all scores).",
           "type": "string",
           "enum": [
             "details",
             "scoreboard"
+          ],
+          "enumDescriptions": [
+            "Details about the current game such as team records, location, etc.",
+            "Scoreboard showing all of today's games"
           ],
           "default": "scoreboard"
         },
@@ -70,6 +79,10 @@
           "enum": [
             "left",
             "right"
+          ],
+          "enumDescriptions": [
+            "Display the ticker on the left side of the status bar.",
+            "Display the ticker on the right side of the status bar."
           ],
           "default": "left"
         },

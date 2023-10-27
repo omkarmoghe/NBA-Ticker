@@ -30,7 +30,7 @@ export default class Manager {
 
   allGamesFinal(): boolean {
     return this.scores.length > 0 &&
-      this.scores.every((score) => (score.status === "Final")) &&
+      this.scores.every((score) => score.final) &&
       dayjs().diff(this.lastUpdated, "day") >= 1;
   }
 

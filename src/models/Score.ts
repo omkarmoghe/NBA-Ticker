@@ -7,6 +7,7 @@ export default class Score {
   awayScore: number;
   awayTeam: string;
   details: string[] = [];
+  final: boolean;
   gameId: string;
   homeScore: number;
   homeTeam: string;
@@ -28,6 +29,7 @@ export default class Score {
     this.uriLive = dayjs() >= this.tipoff
 
     this.status = this.buildStatus(game);
+    this.final = this.status === "Final";
 
     // Set playoff details.
     if (game.seriesGameNumber) {
