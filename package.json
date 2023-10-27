@@ -42,8 +42,8 @@
           "type": "string",
           "default": "${vTeam} ${vScore} - ${hScore} ${hTeam}, ${status}"
         },
-        "nba-ticker.hideFinalScoresInStatusBar": {
-          "markdownDescription": "If checked, final scores will be hidden from the status bar. Final scores will always be visible in the hover when `scoreboard` is selected.",
+        "nba-ticker.hideFinalScores": {
+          "markdownDescription": "If checked, final scores will be hidden from the status bar. Final scores will always be visible in the status bar hover when the `hover` option is set to `scoreboard`. Defaults to `false`.",
           "type": "boolean",
           "default": false
         },

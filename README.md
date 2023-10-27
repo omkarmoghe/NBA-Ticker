@@ -22,9 +22,9 @@ Install via the [VSCode Marketplace](https://marketplace.visualstudio.com/items?
 
 ## Settings
 
-All settings are prefixed by with `"nba-ticker."`, so `"side"` becomes `"nba-ticker.side"` when editing as JSON.
+All settings are prefixed by with `nba-ticker.`, so `side` becomes `"nba-ticker.side"` when editing as JSON.
 
-### `"format"`
+### `format`
 Specifies how the game info should be displayed. Defaults to `"${vTeam} ${vScore} : ${hScore} ${hTeam} @ ${status}"`, which looks like `GSW 42 : 24 LAL @ 4:20 1st`. The available wildcards are:
 - `${vTeam}`: The visiting team's abbreviated name, (e.g. `"GSW"`)
 - `${vScore}`: The visiting team's score
@@ -36,22 +36,25 @@ Specifies how the game info should be displayed. Defaults to `"${vTeam} ${vScore
   - If the game is over, this will be `"Final"`
   - If the status is unknown, this will be `"TBD"`
 
-### `"hover"`
+### `hideFinalScores`
+If checked, final scores will be hidden from the status bar. Final scores will always be visible in the status bar hover when the `hover` option is set to `scoreboard`. Defaults to `false`.
+
+### `hover`
 Specifies what to show when hovering over the ticker. Options are `"details"` (details about the current game) or `"scoreboard"` (all scores).
 
-### `"pollDelaySeconds"`
+### `pollDelaySeconds`
 Specifies how long to wait before fetching new game data from the API. Defaults to `60` seconds, i.e. every minute. Allowed values are [`10`, `600`].
 
-### `"priority"`
+### `priority`
 Specifies the ticker's priority relative to other items in the status bar. **Higher values are shows more to the left.**
 
-### `"side"`
+### `side`
 Specifies which side of the status bar to display the ticker. Options are `"left"` or `"right"`.
 
-### `"teamFilter"`
+### `teamFilter`
 Specifies which teams games are shown for; other teams are ignored. All teams will be shown if the array is empty (`[]`). **Use abbreviated team names** (e.g. `["GSW", "LAL"]`).
 
-### `"tickerDelaySeconds"`
+### `tickerDelaySeconds`
 Specifies how many seconds to show each score. Defaults to `10` seconds. Allowed values are [`1`, `60`].
 
 ## FAQ

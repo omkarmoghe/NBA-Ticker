@@ -67,7 +67,7 @@ export default class Manager {
       this.currentPos = 0;
     }
 
-    if (config("hideFinalScoresInStatusBar") === true && this.currentScore().final) {
+    if (config("hideFinalScores") === true && this.currentScore().final) {
       this.incrementPos();
     }
   }
