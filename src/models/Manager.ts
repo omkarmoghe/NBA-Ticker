@@ -67,7 +67,11 @@ export default class Manager {
       this.currentPos = 0;
     }
 
-    if (config("hideFinalScores") === true && this.currentScore().final) {
+    if (
+      this.currentScore().final &&
+      config("hideFinalScores") === true &&
+      !this.allGamesFinal()
+    ) {
       this.incrementPos();
     }
   }

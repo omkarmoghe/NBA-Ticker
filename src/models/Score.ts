@@ -29,7 +29,7 @@ export default class Score {
     this.uriLive = dayjs() >= this.tipoff
 
     this.status = this.buildStatus(game);
-    this.final = this.status === "Final";
+    this.final = this.status.toLowerCase() === "final";
 
     // Set playoff details.
     if (game.seriesGameNumber) {
