@@ -5,6 +5,11 @@ All notable changes to the "nba-ticker" extension will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.4] - Unreleased
+### Changed
+- Fixed bug where a stale command (link) would be left on the status bar.
+- Dependency upgrades
+
 ## [0.6.3] - 2023-11-05
 ### Added
 - `hideFinalScores` setting to skip final scores in the status bar

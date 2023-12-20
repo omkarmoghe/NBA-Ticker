@@ -56,6 +56,8 @@ export default class Manager {
     }
     if (command) {
       this.ticker.command = command;
+    } else {
+      this.ticker.command = undefined; // Cleanup, otherwise the previous command remains.
     }
 
     this.ticker.show();
